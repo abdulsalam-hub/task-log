@@ -6,7 +6,7 @@ import TaskCell from "../conponents/TaskCell";
 const TaskPlace=() =>
 {
     const { task }=useContext(TaskShare)
-  const listTasks=["all","completed","undone"];
+  const listTasks=["all","active","completed"];
   const [filterTask,setFilterTask]=useState(task)
     
   let bgColor;
@@ -16,15 +16,15 @@ function handlefilter(param) {
       setFilterTask(task);
       bgColor=" purple"
   }
-    const filt = task.filter((tasks) => (!tasks.completed));
-  if(param === "completed") {
+    const filt = task.filter((tasks) => (tasks.completed));
+  if(param === "active") {
     
     setFilterTask(filt)
     bgColor = "rgba(255,100,128,0.4)";
 
     } 
-  if(param==="undone") {
-    setFilterTask((tasks) => tasks.filter((task) => task.completed));
+  if(param==="completed") {
+    setFilterTask((tasks) => tasks.filter((task) =>( !task.completed)));
     bgColor ="bg-fuchsia-500 text-white";
   }
 
