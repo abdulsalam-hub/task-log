@@ -6,21 +6,17 @@ const Contact=() =>
         const [name, setName] = useState("");
         const [email, setEmail] = useState("");
         const [password, setPassword] = useState("");
-        console.log(show);
-
+        
   const handleSubmit=(ev) =>
   {
     ev.preventDefault();
     window.localStorage.setItem('user',name);
-    console.log(" the user name is" + "" + window.localStorage.getItem('user'))
+
  }
   
   useEffect(() => {
-    window.localStorage.getItem('user');
-    
-     console.log(
-       " the user name is" + "" + window.localStorage.getItem("user")
-     );
+window.localStorage.getItem('user');
+
   },[name,email,password]);
   const  date=new Date().getHours()
   function greet(date)
@@ -42,12 +38,12 @@ const Contact=() =>
    
   }}
   
-  console.log(greet(date))
+
   return (
     <div className="w-full h-screen flex flex-col items-center justify-center bg-mauve-600">
       <h1 className="text-3xl py-4 text-slate-200 font-bold uppercase">
         
-     <span>{greet()}</span>   {localStorage.getItem("user")} !
+     <span>{greet(date)}</span>   {localStorage.getItem("user")} !
       </h1>
       <form
         action=""

@@ -14,13 +14,13 @@ const TaskPlace=() =>
 function handlefilter(param) {
     if(param === 'all') {
       setFilterTask(task);
-      bgColor=" red-700"
+      bgColor=" purple"
   }
     const filt = task.filter((tasks) => (!tasks.completed));
   if(param === "completed") {
     
     setFilterTask(filt)
-    bgColor = "bg-fuchsia-300 text-white";
+    bgColor = "rgba(255,100,128,0.4)";
 
     } 
   if(param==="undone") {
@@ -41,7 +41,10 @@ function handlefilter(param) {
             <div
               onClick={() => handlefilter(tasks)}
               key={tasks}
-              className={` ${bgColor} bg-gray-500  text-white rounded-full p-2 font-bold capitalize max-w-35 w-25  text-center my-1 hover:bg-fuchsia-500 cursor-pointer`}
+              style={{
+  backgroundColor:bgColor
+}}
+              className={` ${bgColor} bg-gray-500  focus:${bgColor} text-white rounded-full p-2 font-bold capitalize max-w-35 w-25  text-center my-1 hover:bg-fuchsia-500 cursor-pointer`}
             >
               {tasks}
             </div>
