@@ -3,17 +3,27 @@ import Forms from "./Forms";
 import TaskBox from "./TaskBox";
 import { useContext ,useState} from "react";
 import   { TaskShare} from "../context/TaskShare";
-import {ChevronDownSquare, File ,ChevronUpSquare, FilePlus} from "lucide-react";
+import {ChevronDownSquare,X ,ChevronUpSquare, FilePlus} from "lucide-react";
 const Tasks=() =>
 {
-  const { task,handleComplete,handleDelete }=useContext(TaskShare)
-  const [form,setForm]=useState(false)
+  const  {task}=useContext(TaskShare)
+  const [form,setForm]=useState(true)
   function handleClose() {
     setForm(prev => !prev)
   }
+
+  const NoTask = () => {
+    return (
+      <div>
+        <FilePlus className="text-amber-500 fill-slate-300 h-20 w-20" />
+        <h2>no tasks added yet !</h2>
+        <p className="text-[20px]">click dropdown on the right to add task</p>
+      </div>
+    );
+  };
   return (
-    <div className="pt-13  h-screen w-full px-3 ">
-      <div className="w-full border rounded h-auto mt-2">
+    <div className="pt-16 mb-2  h-screen w-full px-3 ">
+      <div className="w-full border rounded py-2 h-auto mt-3 cursor-pointer">
         {form ? (
           <ChevronDownSquare
             onClick={handleClose}
@@ -27,53 +37,26 @@ const Tasks=() =>
         )}
         {!form && <Forms />}
       </div>
-      <div className="">
-        {task > 0 ? (
-          task.map((task) =>
-          {
-            return (
-            <div
-              key={task.id}
-              className={`border font-bold border-gray-400 ${task.completed ? "border-200 text-gray-900" : " "} rounded p-2 flex items-center justify-around my-2  md:mx-4 w-full `}
-            >
-              <h1
-                className={`font-bold py-3 px-2 text-xl font-['sans-serif',consolas] ${task.completed ? " line-through" : ""}`}
-              >
-                {task.title}
-              </h1>
-
-              <div
-                className={` flex justify-around items-center capitalize ${task.dueDate === task.createdDate ? " text-emerald-500 " : ""} `}
-              >
-                <span>{task.dueDate}</span> <span>{task.createdDate}</span>
-              </div>
-              <div className="flex justify-around items-baseline-last my-3 w-full">
-                <div
-                  onClick={() => handleComplete(task.id)}
-                  className={`${task.completed ? "bg-green-500 text-slate-300 " : "bg-amber-400 text-white"} rounded-full border border-black p-1`}
-                >
-                  {task.completed ? "unCompleted" : "Completed"}
-                </div>
-                <button
-                  onClick={() => handleDelete(task.id)}
-                  className="h-8 w-8 rounded-full bg-stone-300 text-black/700"
-                >
-                  {" "}
-                  <X className="h-5 w-5 font-bold text-[16px]" />
-                </button>
-              </div>
-            </div>
-          );})
-        ) : (
-          <div className="text-center flex justify-center flex-col items-center text-3xl capitalize font-black mt-9">
-            <FilePlus className="text-2xl h-20 w-20 text-amber-400 fill-neutral-50 text-center my-6" />
-            <h2>no task added yet ! </h2>
+      <>
+        {task.map((tasks, idx) => (
+         <TaskBox task={tasks} key={idx} />
+        ))}
+      </>
+      <div className="mx-auto mt-20 font-black text-2xl text-center capitalize">
+        {task.length < 0  && (
+          <div>
+            <FilePlus className="text-amber-500 fill-slate-300 h-20 w-20" />
+            <h2>no tasks added yet !</h2>
+            <p className="text-[20px]">
+              click dropdown on the right to add task
+            </p>
           </div>
         )}
       </div>
-      
     </div>
   );
 }
 
-export default Tasks
+
+export default Tasks;
+
