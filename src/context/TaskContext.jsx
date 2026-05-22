@@ -7,12 +7,12 @@ const TaskContext=({children}) =>
   const [task,setTask]=useState(() =>
   {
     const saved=window.localStorage.getItem("task");
-    return saved? JSON.parse(saved):[];
+    return saved ? JSON.parse(saved):[];
   });
   const [title,setTitle]=useState("");
   const [dueDate,setDueDate]=useState("");
   const [description, setDescription] = useState("");
-  const [priority,setPriority]=useState("");
+  const [priority,setPriority]=useState("high");
   function handleTitle(ev)
   {
     setTitle(ev.target.value);
@@ -28,39 +28,36 @@ const TaskContext=({children}) =>
   {
     setPriority(ev.target.value);
   }
+
   function handleAddTasks(ev)
   {
-    
     const tasks={
-      id: new Date().getSeconds(),
-      title,
-      description,
-      createdDate: new Date().toLocaleString().trimEnd().split("",10).join(""),
-      dueDate,
-      completed: false,
-      priority
-    };
-    setTask([tasks,...task]);
-    ev.preventDefault();
-    setTitle(""); setPriority(""); setDueDate("");
+         id:new Date().getSeconds()
+,         title,
+         description,
+         createdDate: new Date().toLocaleDateString(),
+         dueDate,
+         completed: false,
+         priority
+       };
+  ev.preventDefault();
+   setTask([tasks,...task]);
+    setTitle("");
+    setDescription("");
+    setPriority("high");
+    setDueDate("");
   };
   function handleDelete(id)
   {
-
-    const filtered=task.filter((tasks) => {
-    return tasks.id !== id  
-    });
-   
-    setTask(filtered);
-    
-      
-  }
+ const filtered=task.filter((tasks) => ( tasks.id !== id  ));
+   setTask(filtered); }
 
   function handleComplete(id)
   {
+    
     const complete=task.map((tasks) =>
 {
- tasks.id === id ? {...tasks, complete: true  } : tasks
+return tasks.id === id ? {...tasks, completed: !tasks.completed} : tasks;
 })
       
     setTask(complete)
@@ -70,7 +67,8 @@ const TaskContext=({children}) =>
       window.localStorage.setItem("task",JSON.stringify(task));
     },[task]);
 
-    return (
+  return (
+    <>
       <TaskShare.Provider
         value={{
           task,
@@ -89,7 +87,8 @@ const TaskContext=({children}) =>
       >
         {children}
       </TaskShare.Provider>
-    );
+    </>
+  );
   }
 
 export default TaskContext;

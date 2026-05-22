@@ -3,7 +3,7 @@ import React from 'react'
 import { Link } from "react-router-dom";
 const Nav = () => {
   return (
-    <div className="w-full gap-x-2 py-2 fixed font-bold  left-0 top-0 flex justify-around items-center border-b-2 border-b-slate-700  text-slate-800 text-2xl backdrop-blur-xs">
+    <div className="w-full z-50 bg-white gap-x-2 py-2 fixed font-bold  left-0 top-0 flex justify-around items-center border-b-2 border-b-slate-700  text-slate-800 text-2xl backdrop-blur-xs">
       <Link to="/">
         {" "}
         <div className="  capitalize flex items-center font-[consolas,arial,sans-serif] justify-start px-2">

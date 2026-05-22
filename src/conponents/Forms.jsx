@@ -24,17 +24,19 @@ const Forms=() =>
         type="text"
         value={title}
         onChange={handleTitle}
+        required
         placeholder="enter task title ..."
-        className="w-full h-10 bold outline-1 rounded md:h-full  capitalize  indent-2"
+        className="w-full h-10 bold outline-1 border-0 focus-within:border-none rounded md:h-full  capitalize  indent-2"
       />
-      <textarea value={description} className="border p-2 w-full overflow-y-auto rounded-lg h-15 shadow-lg shadow-blue-300/50" onChange={handleDescription} name="" id="" placeholder=" enter title description"></textarea>
+      <textarea value={description} className="border outline-0 p-2 w-full overflow-y-auto rounded-lg h-15 shadow-lg" onChange={handleDescription} name="" id="" placeholder=" enter title notes..."></textarea>
       <input
         value={dueDate}
         onChange={handleDueDate}
         type="date"
         name=""
         id=""
-        className="w-full bold outline-1 rounded md:h-full h-10  capitalize  indent-2"
+        required
+        className="w-full bold outline-1 rounded md:h-full h-10  capitalize  indent-2 "
       />
       <select
         name=""
@@ -43,9 +45,7 @@ const Forms=() =>
         onChange={handlePriority}
         className="w-full h-10 bold outline-1 rounded md:h-full  capitalize cursor-pointer"
       >
-        <option  disabled aria-readonly={true} role="option">
-          choose priorities
-        </option>
+     
         <option value="high">high</option>
         <option value="medium">medium</option>
         <option value="low">low</option>
