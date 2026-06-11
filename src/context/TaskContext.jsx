@@ -50,7 +50,11 @@ const TaskContext=({children}) =>
   function handleDelete(id)
   {
  const filtered=task.filter((tasks) => ( tasks.id !== id  ));
-   setTask(filtered); }
+   const firm= window.confirm(`Are you sure to delete this task ?
+    
+    deleted task cannot be undone.  `)
+    firm && setTask(filtered) ;
+  }
 
   function handleComplete(id)
   {
@@ -59,7 +63,7 @@ const TaskContext=({children}) =>
 {
 return tasks.id === id ? {...tasks, completed: !tasks.completed} : tasks;
 })
-      
+ 
     setTask(complete)
   }
     useEffect(() =>

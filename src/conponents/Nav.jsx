@@ -17,13 +17,13 @@ const Nav = () => {
           <Link
             title="add tasks"
             to="/task"
-            className="h-12 w-12 rounded-full  bg-gray-400 text-stone-700 hover:text-gray-800 hover:bg-stone-500"
+            className="h-12 w-12 rounded-full  bg-gray-400 text-slate-600 hover:text-gray-800 hover:bg-gray-600"
           >
             {" "}
             <PlusSquare className="w-10 h-full  text-neutral-600 hover:text-gray-800 " />
           </Link>
         </div>
-        <button className="cursor-pointer  rounded-lg bg-gray-400 capitalize py-2 px-3  transition-all duration-200 hover:bg-stone-700">
+        <button className="cursor-pointer  rounded-xl bg-gray-300 inset-shadow-black inset-shadow-[2px_1px_5px] capitalize py-2 px-3  transition-all duration-300 hover:bg-slate-700 hover:text-gray-300">
           <Link to="/taskplace">tasks</Link>
         </button>
       </div>

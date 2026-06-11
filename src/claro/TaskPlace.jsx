@@ -1,33 +1,35 @@
 import React,{useContext ,useState} from 'react'
 import { TaskShare } from "../context/TaskShare";
-
+import { Link } from "react-router-dom";
 import TaskCell from "../conponents/TaskCell";
+import FilterBar from "../conponents/FilterBar";
 
 const TaskPlace=() =>
 {
     const { task }=useContext(TaskShare)
   const listTasks=["all","active","completed"];
   const [filterTask,setFilterTask]=useState(task)
-    
-  var bgColor;
-   
+  const [color,setColor]=useState('')  
+  
+  
   function handlefilter(param)
   {
-  bgColor = "purple";
-    if(param === 'all') {
+ const col=listTasks.find(tas=>tas===param)
+   if (col)setColor('purple')
+    if(param==='all') {
       setFilterTask(task);
-      bgColor="purple"
+
   }
     //const filt = task.filter((tasks) => (tasks.completed));
   if(param === "active") {
    
     setFilterTask((prev)=>prev.filter(tasks=>(!tasks.completed)))
-    bgColor = "rgba(255,100,128,0.4)";
+
 
     } 
   if(param==="completed") {
-    setFilterTask((tasks) => tasks.filter(task =>( task.completed)));
-    bgColor ="violet";
+    setFilterTask(task.filter(task =>( task.completed)));
+
   }
 
     
@@ -35,27 +37,15 @@ const TaskPlace=() =>
    
   return (
     <div className="w-full pt-18 scroll-smooth ">
+   
       <div
         className={`w-full  sticky top-13 z-50  right-0 py-3 flex justify-center gap-x-3 bg-slate-500`}
       >
-        {listTasks.map((tasks) => {
-          return (
-            <div
-              onClick={() => handlefilter(tasks)}
-              key={tasks}
-              style={{
-                backgroundColor: bgColor,
-              }}
-              className={` bg-gray-500  text-white rounded-full p-2 font-bold capitalize max-w-35 w-25  text-center my-1 hover:bg-fuchsia-500 cursor-pointer`}
-            >
-              {tasks}
-            </div>
-          );
-        })}
+  {listTasks.map((tasks)=>(<FilterBar tasks={tasks} key={tasks} color={color} handlefilter={()=>handlefilter(tasks)}/>)) }
       </div>
 
-      <div className="w-full mt-4 px-3 flex justify-center items-center flex-col  ">
-        {filterTask.map((task,idx) => {
+      <div className="w-full px-auto grid place-items-center mx-auto scroll-smooth transition-all duration-500 mt-4 px-3   ">
+        {filterTask.map((task, idx) => {
           return (
             <TaskCell
               key={idx}
@@ -68,6 +58,18 @@ const TaskPlace=() =>
             />
           );
         })}
+      </div>
+      <div>
+        {
+          filterTask.length==[]&&
+          <div>
+              
+            <h1 className="text-2xl font-black capitalize text-center mt-20">no tasks available to show.</h1>
+              <button className=" rounded-lg p-2 self-center flex mx-auto mt-3 font-bold bg-slate-200  ">
+              <Link to="/task">add task</Link>
+         </button>
+            </div>
+        }
       </div>
     </div>
   );

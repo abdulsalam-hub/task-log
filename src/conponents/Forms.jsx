@@ -17,8 +17,7 @@ const Forms=() =>
     <form
       onSubmit={handleAddTasks}
       action=""
-  
-      className="gap-y-3 bg-slate-100 rounded-lg md:h-10 md:mt-3 flex flex-col md:flex-row items-center md:justify-center md:gap-x-4 md:w-vw w-full "
+      className="gap-y-3 bg-[rgba(255,255,255,0.39)] rounded-lg md:h-10 md:mt-3 flex flex-col md:flex-row items-center md:justify-center md:gap-x-4 md:w-vw w-full "
     >
       <input
         type="text"
@@ -28,7 +27,14 @@ const Forms=() =>
         placeholder="enter task title ..."
         className="w-full h-10 bold outline-1 border-0 focus-within:border-none rounded md:h-full  capitalize  indent-2"
       />
-      <textarea value={description} className="border outline-0 p-2 w-full overflow-y-auto rounded-lg h-15 shadow-lg" onChange={handleDescription} name="" id="" placeholder=" enter title notes..."></textarea>
+      <textarea
+        value={description}
+        className="border outline-0 p-2 w-full overflow-y-auto rounded-lg h-15 shadow-lg"
+        onChange={handleDescription}
+        name=""
+        id=""
+        placeholder=" enter title description..."
+      ></textarea>
       <input
         value={dueDate}
         onChange={handleDueDate}
@@ -36,7 +42,7 @@ const Forms=() =>
         name=""
         id=""
         required
-        className="w-full bold outline-1 rounded md:h-full h-10  capitalize  indent-2 "
+        className="w-full cursor-pointer bold outline-1 rounded md:h-full h-10  capitalize  indent-2 "
       />
       <select
         name=""
@@ -45,17 +51,19 @@ const Forms=() =>
         onChange={handlePriority}
         className="w-full h-10 bold outline-1 rounded md:h-full  capitalize cursor-pointer"
       >
-     
-        <option value="high">high</option>
-        <option value="medium">medium</option>
-        <option value="low">low</option>
+        <optgroup>
+        
+          <option value="high">high</option>
+          <option value="medium">medium</option>
+          <option value="low">low</option>
+        </optgroup>
       </select>
       <button
         type="submit"
         role="button"
-        className="cursor-pointer h-10 bg-gray-400 my-2 md:my-0 md:h-full px-3  rounded-lg font-bold capitalize w-30"
+        className="cursor-pointer h-10 bg-gray-400 my-2 md:my-0 md:h-full px-3  rounded-lg font-bold capitalize min-w-30 hover:bg-slate-400"
       >
-        task
+        add task
       </button>
     </form>
   );
