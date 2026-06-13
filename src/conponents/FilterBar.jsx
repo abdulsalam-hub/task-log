@@ -10,7 +10,7 @@ const FilterBar = ({tasks,handlefilter,color}) => {
             style={{
               backgroundColor: color
             }}
-            className={` bg-gray-500  text-white rounded-full p-2 font-bold capitalize max-w-35 w-25  text-center my-1 hover:bg-fuchsia-500 cursor-pointer`}
+            className={` bg-gray-500 border ${color} border-slate-200 backdrop:blur-md text-white rounded-full p-2 font-bold capitalize max-w-35 w-25  text-center  hover:bg-stone-400 cursor-pointer`}
           >
             {tasks}
           </div>

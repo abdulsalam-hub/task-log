@@ -4,3 +4,7 @@
         @apply w-full outline-1 rounded h-full capitalize indent-2
     }
 }
+
+@view-transition {
+    navigation: auto;
+}

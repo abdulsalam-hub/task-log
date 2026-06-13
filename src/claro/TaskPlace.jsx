@@ -9,13 +9,13 @@ const TaskPlace=() =>
     const { task }=useContext(TaskShare)
   const listTasks=["all","active","completed"];
   const [filterTask,setFilterTask]=useState(task)
-  const [color,setColor]=useState('')  
+  const [color,setColor]=useState("all")  
   
   
   function handlefilter(param)
   {
- const col=listTasks.find(tas=>tas===param)
-   if (col)setColor('purple')
+ 
+    setColor(param);
     if(param==='all') {
       setFilterTask(task);
 
@@ -23,7 +23,7 @@ const TaskPlace=() =>
     //const filt = task.filter((tasks) => (tasks.completed));
   if(param === "active") {
    
-    setFilterTask((prev)=>prev.filter(tasks=>(!tasks.completed)))
+    setFilterTask(task.filter(tasks=>(!tasks.completed)))
 
 
     } 
@@ -36,12 +36,12 @@ const TaskPlace=() =>
     }
    
   return (
-    <div className="w-full pt-18 scroll-smooth ">
+    <div className="w-full pt-0 scroll-smooth ">
    
       <div
-        className={`w-full  sticky top-13 z-50  right-0 py-3 flex justify-center gap-x-3 bg-slate-500`}
+        className={`w-full sticky top-12 z-50 right-0 py-3 flex justify-center gap-x-3 bg-slate-500`}
       >
-  {listTasks.map((tasks)=>(<FilterBar tasks={tasks} key={tasks} color={color} handlefilter={()=>handlefilter(tasks)}/>)) }
+  {listTasks.map((tasks)=>(<FilterBar tasks={tasks} key={tasks} color={color===tasks && "bg-slate-800"} handlefilter={()=>handlefilter(tasks)}/>)) }
       </div>
 
       <div className="w-full px-auto grid place-items-center mx-auto scroll-smooth transition-all duration-500 mt-4 px-3   ">
@@ -61,7 +61,7 @@ const TaskPlace=() =>
       </div>
       <div>
         {
-          filterTask.length==[]&&
+          filterTask.length<=0&&
           <div>
               
             <h1 className="text-2xl font-black capitalize text-center mt-20">no tasks available to show.</h1>

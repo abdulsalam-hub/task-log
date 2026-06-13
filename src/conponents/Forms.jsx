@@ -17,7 +17,7 @@ const Forms=() =>
     <form
       onSubmit={handleAddTasks}
       action=""
-      className="gap-y-3 bg-[rgba(255,255,255,0.39)] rounded-lg md:h-10 md:mt-3 flex flex-col md:flex-row items-center md:justify-center md:gap-x-4 md:w-vw w-full "
+      className="gap-y-3 bg-[rgba(255,255,255,0.39)] rounded-lg md:h-10 md:mt-3 flex flex-col md:flex-row  items-center md:justify-center md:gap-x-4 md:w-vw w-full "
     >
       <input
         type="text"
@@ -29,11 +29,11 @@ const Forms=() =>
       />
       <textarea
         value={description}
-        className="border outline-0 p-2 w-full overflow-y-auto rounded-lg h-15 shadow-lg"
+        className="border outline-0 py-2 w-full rounded-lg h-12 md:h-full shadow-lg"
         onChange={handleDescription}
         name=""
         id=""
-        placeholder=" enter title description..."
+        placeholder="enter description..."
       ></textarea>
       <input
         value={dueDate}
@@ -49,14 +49,14 @@ const Forms=() =>
         id=""
         value={priority}
         onChange={handlePriority}
-        className="w-full h-10 bold outline-1 rounded md:h-full  capitalize cursor-pointer"
+        className="w-full h-10 bold outline-1 rounded md:h-full bg-gray-300 capitalize cursor-pointer"
       >
-        <optgroup>
-        
+
+          <option value="" className="disabled:text-white text-white" disabled aria-disabled>select a priority</option>
           <option value="high">high</option>
           <option value="medium">medium</option>
           <option value="low">low</option>
-        </optgroup>
+
       </select>
       <button
         type="submit"

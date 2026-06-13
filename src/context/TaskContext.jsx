@@ -28,7 +28,29 @@ const TaskContext=({children}) =>
   {
     setPriority(ev.target.value);
   }
-
+  useEffect(() =>
+  {
+    if(dueDate===new Date().toLocaleDateString()) {
+      Notification.requestPermission().then((permission) =>
+      {
+        if(Notification.permission==='granted') {
+          new Notification(`your task is due today`, {
+            body: " 🚀congratulation on your successful task completed! 🎉👏🏻",
+            icon: "src/assets/react.svg",
+            vibrate:[200,100,200]
+          });
+          Notification.onclick=() =>
+          {
+            window.location.pathname="/taskplace"
+          }
+           console.log(permission,new Notification);
+        }
+        else {
+          alert("permission not granted")
+}
+       
+      })}
+  },[dueDate])
   function handleAddTasks(ev)
   {
     const tasks={
@@ -70,7 +92,9 @@ return tasks.id === id ? {...tasks, completed: !tasks.completed} : tasks;
     {
       window.localStorage.setItem("task",JSON.stringify(task));
     },[task]);
-
+  console.log(task.find((tasks) =>{return (
+    tasks.dueDate === new Date().toLocaleDateString().toString().split('-').reverse().join("-")
+  )}))
   return (
     <>
       <TaskShare.Provider
