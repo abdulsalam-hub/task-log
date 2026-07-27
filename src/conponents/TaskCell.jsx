@@ -19,8 +19,8 @@ const TaskCell = memo(function TaskCell( { id,title,note,dueDate,completed,prior
        </span>
      </div>
 
-     <p title="task description" className=" py-1  font-[trebuchet Ms,consolas,arial,sans-serif] font-[400] ">{note} </p>
-     <div className="my-3 w-full flex gap-x-2">
+     <p title="task description" className=" py-1  font-[trebuchet Ms,consolas,arial,sans-serif] font-normal ">{note} </p>
+     <div title="task due date 📆" className="my-3 w-full flex gap-x-2">
        <CalendarCheck className="text-sky-200" /> <span>{dueDate}</span>
      </div>
      <div className="flex items-center justify-between mx-3 my-3 ">
@@ -30,7 +30,8 @@ const TaskCell = memo(function TaskCell( { id,title,note,dueDate,completed,prior
        >
          {!completed ? "active" : "done"}
        </button>
-       <div> {priority}</div>
+       <div title={` task priority i.e
+       (how important it is !) `}> {priority}</div>
        
      </div>
    </div>
