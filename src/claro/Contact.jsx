@@ -17,7 +17,7 @@ const Contact=() =>
   useEffect(() => {
 window.localStorage.getItem('user');
 
-  },[name,email,password]);
+  },[name]);
   const  date=new Date().getHours()
   function greet(date)
   {

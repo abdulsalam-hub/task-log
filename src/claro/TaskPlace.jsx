@@ -36,15 +36,15 @@ const TaskPlace=() =>
     }
    
   return (
-    <div className="w-full pt-10 scroll-smooth ">
+    <div className="w-full pt-10 scroll-smooth pb-5">
    
       <div
-        className={`w-full sticky top-12 z-50 right-0 py-3 flex justify-center gap-x-3 bg-slate-500`}
+        className={`w-full sticky top-18.5 z-50 right-0 py-3 flex justify-center gap-x-3 bg-slate-500`}
       >
   {listTasks.map((tasks)=>(<FilterBar tasks={tasks} key={tasks} color={color===tasks && "bg-slate-800"} handlefilter={()=>handlefilter(tasks)}/>)) }
       </div>
 
-      <div className="w-full px-auto grid place-items-center mx-auto scroll-smooth transition-all duration-500 mt-4 px-3   ">
+      <div className="w-full px-auto grid place-items-center mx-auto scroll-smooth transition-all duration-500 mt-8 px-3   ">
         {filterTask.map((task, idx) => {
           return (
             <TaskCell
