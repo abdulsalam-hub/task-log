@@ -39,7 +39,7 @@ const TaskPlace=() =>
     <div className="w-full pt-10 scroll-smooth pb-5">
    
       <div
-        className={`w-full sticky top-18.5 z-50 right-0 py-3 flex justify-center gap-x-3 bg-slate-500`}
+        className={`w-full sticky top-18.5 z-50 right-0 py-3.5 flex justify-around  md:justify-center gap-x-3 items-center bg-slate-500`}
       >
   {listTasks.map((tasks)=>(<FilterBar tasks={tasks} key={tasks} color={color===tasks && "bg-slate-800"} handlefilter={()=>handlefilter(tasks)}/>)) }
       </div>

@@ -17,7 +17,7 @@ const Forms=() =>
     <form
       onSubmit={handleAddTasks}
       action=""
-      className="gap-y-3 bg-[rgba(255,255,255,0.39)] rounded-lg md:h-10 md:mt-3 flex flex-col md:flex-row  items-center md:justify-center md:gap-x-4 md:w-vw w-full "
+      className="gap-y-3 bg-[rgba(255,255,255,0.39)] rounded-lg md:h-15 md:mt-3 flex flex-col md:flex-row  items-center md:justify-center md:gap-x-4 md:w-vw w-full "
     >
       <input
         type="text"
@@ -35,9 +35,10 @@ const Forms=() =>
         id=""
         placeholder="enter title description..."
       ></textarea>
-      <div title="task end duration" className="w-full ">
-        <label htmlFor="duration" className="capitalize font-semibold font-mono">end date : </label>
+     
+  
         <input
+          title="task end duration"
           value={dueDate}
           onChange={handleDueDate}
           type="date"
@@ -45,9 +46,9 @@ const Forms=() =>
           id=""
           required
           placeholder="end date"
-          className="w-full cursor-pointer bold outline-1 rounded md:h-full h-10  capitalize  indent-2 "
+          className="w-full cursor-pointer bold outline-1 rounded h-10 md:h-full capitalize  indent-2 "
         />
-      </div>
+ 
       <select
         name=""
         id=""
