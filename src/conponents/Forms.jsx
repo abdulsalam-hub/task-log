@@ -33,17 +33,21 @@ const Forms=() =>
         onChange={handleDescription}
         name=""
         id=""
-        placeholder="enter description..."
+        placeholder="enter title description..."
       ></textarea>
-      <input
-        value={dueDate}
-        onChange={handleDueDate}
-        type="date"
-        name=""
-        id=""
-        required
-        className="w-full cursor-pointer bold outline-1 rounded md:h-full h-10  capitalize  indent-2 "
-      />
+      <div title="task end duration" className="w-full ">
+        <label htmlFor="duration" className="capitalize font-semibold font-mono">end date : </label>
+        <input
+          value={dueDate}
+          onChange={handleDueDate}
+          type="date"
+          name=""
+          id=""
+          required
+          placeholder="end date"
+          className="w-full cursor-pointer bold outline-1 rounded md:h-full h-10  capitalize  indent-2 "
+        />
+      </div>
       <select
         name=""
         id=""
@@ -51,12 +55,17 @@ const Forms=() =>
         onChange={handlePriority}
         className="w-full h-10 bold outline-1 rounded md:h-full bg-gray-300 capitalize cursor-pointer"
       >
-
-          <option value="" className="disabled:text-white text-white" disabled aria-disabled>select a priority</option>
-          <option value="high">high</option>
-          <option value="medium">medium</option>
-          <option value="low">low</option>
-
+        <option
+          value=""
+          className="disabled:text-white text-white"
+          disabled
+          aria-disabled
+        >
+          select a priority
+        </option>
+        <option value="high">high</option>
+        <option value="medium">medium</option>
+        <option value="low">low</option>
       </select>
       <button
         type="submit"

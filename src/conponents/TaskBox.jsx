@@ -22,14 +22,15 @@ const TaskBox = memo(function TaskBox({
           <div className={`line-clamp-1 flex  items-center`}>
             <button
               title="delete"
-              
               onClick={() => handleDelete(id)}
               className="h-8 w-8 rounded-full hover:bg-stone-300 text-black/900 font-black   flex justify-center items-center cursor-pointer hover:scale-105 transition"
             >
               {" "}
               <X className="h-8 w-5 font-bold text-[16px] " />
             </button>{" "}
-            <h1 className={` text-[clamp(1vw,1rem,3rem)]  ${completed && " line-through "}`}>
+            <h1
+              className={` text-[clamp(1vw,1rem,3rem)]  ${completed && " line-through "}`}
+            >
               {title}
             </h1>
           </div>
@@ -47,10 +48,13 @@ const TaskBox = memo(function TaskBox({
           <div title="priorities" className={` `}>
             {priority}
           </div>
-          <details className="flex gap-x-3 transition-opacity details-content:transition-discrete duration-500 ease-in cursor-pointer">
+          <details
+            title="startDate~endDate"
+            className="flex gap-x-3 transition-opacity details-content:transition-discrete duration-500 ease-in cursor-pointer"
+          >
             <summary>date: </summary>
             <div className={`capitalize  ${dueDate ? " " : ""} `}>
-              <span>{dueDate}</span>~<span>{created}</span>
+              <span>{created}</span>~<span>{dueDate}</span>
             </div>
           </details>
         </div>

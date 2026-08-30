@@ -40,7 +40,8 @@ const TaskContext=({children}) =>
          completed: false,
          priority
        };
-  ev.preventDefault();
+    ev.preventDefault();
+    if(tasks.title=="") return;
    setTask([tasks,...task]);
     setTitle("");
     setDescription("");
@@ -76,6 +77,7 @@ return tasks.id === id ? {...tasks, completed: !tasks.completed} : tasks;
     {
     return item.dueDate === item.createdDate;
     })
+     
     if (found) {
       Notification.requestPermission().then((permission) => {
         if (Notification.permission === "granted") {
@@ -85,16 +87,26 @@ return tasks.id === id ? {...tasks, completed: !tasks.completed} : tasks;
             vibrate: [200, 100, 200]
           });
           Notification.onclick = () => {
-            window.location.href = "http://localhost:5173/";
+            window.location.href = "http://tasklog-place.vercel.app/taskplace";
           };
-          console.log(permission, new Notification());
+          console.log(permission);
         } else {
           alert("permission to send 'notification' not granted");
         }
       });
       console.log(found , "they are equal")
     }
-  },[task])
+   },[task])
+
+  const com=task.filter((item) =>
+  {
+    return item.completed
+  })
+  const completed=com.length
+  const inp = task.filter((item) => {
+    return !item.completed;
+  });
+  const inprogress=inp.length
   return (
     <>
       <TaskShare.Provider
@@ -110,7 +122,8 @@ return tasks.id === id ? {...tasks, completed: !tasks.completed} : tasks;
           handleDescription,
           handleAddTasks,
           handleDelete,
-          handleComplete
+          handleComplete,
+          completed,inprogress
         }}
       >
         {children}

@@ -36,7 +36,7 @@ const TaskPlace=() =>
     }
    
   return (
-    <div className="w-full pt-10 scroll-smooth ">
+    <div className="w-full pt-10 scroll-smooth pb-5">
    
       <div
         className={`w-full sticky top-12 z-50 right-0 py-3 flex justify-center gap-x-3 bg-slate-500`}
