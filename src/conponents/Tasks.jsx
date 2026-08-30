@@ -48,6 +48,8 @@ const Tasks=() =>
           <div>
             <FilePlus className="flex mx-auto text-slate-700 fill-gray-300 h-20 w-20 " />
             <h2 className=" text-[clamp(1.4rem,2vw,2rem)] text-slate-800 uppercase font-serif">no tasks added yet !</h2>
+            <FilePlus className="flex mx-auto text-slate-700 fill-gray-300 h-20 w-20 " />
+            <h2 className=" text-[clamp(1.4rem,2vw,2rem)] text-slate-800 uppercase font-serif">no tasks added yet !</h2>
             <p className="text-[clamp(1rem,2vw,1rem)]">
               click dropdown on the left to add task
             </p>

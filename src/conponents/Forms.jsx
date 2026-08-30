@@ -34,6 +34,7 @@ const Forms=() =>
         name=""
         id=""
         placeholder="enter title description..."
+      
       ></textarea>
      
   
@@ -56,6 +57,17 @@ const Forms=() =>
         onChange={handlePriority}
         className="w-full h-10 bold outline-1 rounded md:h-full bg-gray-300 capitalize cursor-pointer"
       >
+        <option
+          value=""
+          className="disabled:text-white text-white"
+          disabled
+          aria-disabled
+        >
+          select a priority
+        </option>
+        <option value="high">high</option>
+        <option value="medium">medium</option>
+        <option value="low">low</option>
         <option
           value=""
           className="disabled:text-white text-white"
